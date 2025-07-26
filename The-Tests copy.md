@@ -1,32 +1,35 @@
 # The Tests
 
-This document provides an overview of all test cases created for the XNDEV.COM Bug Hunter project.
+This document provides comprehensive documentation of all 187 test cases for the XNDEV.COM Bug Hunter project.
+## 📊 Test Framework Overview
 
-## Test Case Format
+### Test Case Format
 Each test case includes:
-- **Test ID**: Unique identifier
+- **Test ID**: Unique identifier (TC-001 through TC-187)
 - **Test Name**: Descriptive name of the test
 - **Description**: What the test validates
 - **Expected Result**: What should happen when the test passes
-- **Current Status**: Pass, Fail, Not Executed Yet
+- **Current Status**: Pass ✅, Fail ❌, Not Executed Yet
 - **Bug Reference**: Link to associated bug report (if applicable)
 - **Page Object**: Which page object model is used
 - **Priority**: High, Medium, Low
 
-## Test Summary
+### Test Summary Statistics
 
-- **Total Tests**: 187
+- **Total Tests**: 187 sequential test cases
 - **Passing**: 135 ✅ 
 - **Failing**: 52 ❌
 - **Not Executed**: 0
+- **Pass Rate**: 72.2%
 
 ### Pages Covered (Sequential TC-001 through TC-187)
-- **Homepage**: Navigation and SEO tests (TC-001 to TC-012 - 12 tests)
-- **Testing Page**: Comprehensive functional tests (TC-013 to TC-039 - 27 tests)
-- **Consulting Page**: Comprehensive functional tests (TC-040 to TC-083 - 44 tests)
-- **Blog Page**: Comprehensive functional tests (TC-084 to TC-137 - 54 tests)
-- **Writing Page**: Comprehensive functional tests (TC-138 to TC-170 - 33 tests)
-- **Placement Page**: Comprehensive functional tests (TC-171 to TC-187 - 17 tests)
+- **Homepage**: Navigation and SEO tests (TC-001 to TC-026 - 26 tests)
+- **Testing Page**: Comprehensive functional tests (TC-027 to TC-055 - 29 tests)
+- **Placement Page**: Comprehensive functional tests (TC-056 to TC-081 - 26 tests)
+- **Consulting Page**: Comprehensive functional tests (TC-082 to TC-109 - 28 tests)
+- **Blog Page**: Comprehensive functional tests (TC-110 to TC-139 - 30 tests)
+- **Software Page**: Comprehensive functional tests (TC-140 to TC-163 - 24 tests)
+- **Writing Page**: Comprehensive functional tests (TC-164 to TC-187 - 24 tests)
 
 ### Bug Distribution by Priority
 - **High Priority Bugs**: Multiple H1 elements (site-wide), broken navigation links (site-wide), missing meta descriptions, accessibility issues
@@ -43,7 +46,7 @@ Each test case includes:
 - Image accessibility (most pages) ✅
 - Page loading performance ✅
 
-## Key Insights for Development Team
+### Key Insights for Development Team
 
 1. **Site-wide Template Issues**: Multiple H1 elements and navigation problems affect all pages, indicating template-level fixes needed
 2. **Inconsistent Implementation**: Team knows how to implement proper elements (good examples exist) but template issues override proper implementation
@@ -52,35 +55,140 @@ Each test case includes:
 5. **Accessibility Gaps**: Links without accessible text found across multiple pages
 6. **Security**: Mixed results on external link security attributes
 
-## Test Execution Instructions
+---
 
-To run all tests:
+## 🚀 Test Execution Guide
+
+### Quick Start Commands
+
 ```bash
+# Run all tests
 npm test
-```
 
-To run specific test suites:
-```bash
-# Navigation tests only
-npx playwright test tests/homepage-navigation.spec.ts
-
-# SEO and standards tests only  
-npx playwright test tests/homepage-seo-standards.spec.ts
-```
-
-To run tests in headed mode (see browser):
-```bash
+# Run tests with visible browser
 npm run test:headed
-```
 
-To debug specific test:
-```bash
+# Debug specific test
 npm run test:debug
+
+# View test report
+npm run report
 ```
 
-To view test results:
+### Advanced Playwright Commands
+
 ```bash
-npm run report
+# Run all tests across all pages
+npx playwright test
+
+# Run tests in headed mode (see browser)
+npx playwright test --headed
+
+# Run tests with debug mode
+npx playwright test --debug
+
+# Generate and view test report
+npx playwright test; npx playwright show-report
+```
+
+### Running Tests by Individual Pages
+
+```bash
+# Homepage tests
+npx playwright test tests/homepage-navigation.spec.ts tests/homepage-seo-standards.spec.ts
+
+# Testing page tests
+npx playwright test tests/testing-page.spec.ts
+
+# Placement page tests
+npx playwright test tests/placement-page.spec.ts
+
+# Consulting page tests
+npx playwright test tests/consulting-page.spec.ts
+
+# Blog page tests
+npx playwright test tests/blog-page.spec.ts
+
+# Software page tests
+npx playwright test tests/software-page.spec.ts
+
+# Writing page tests
+npx playwright test tests/writing-page.spec.ts
+```
+
+### Running Tests by Functionality Groups
+
+```bash
+# Run all navigation tests
+npx playwright test -g "navigation"
+
+# Run all SEO tests  
+npx playwright test -g "meta description"
+
+# Run all accessibility tests
+npx playwright test -g "accessibility"
+
+# Run all link tests
+npx playwright test -g "link"
+
+# Run all structure tests
+npx playwright test -g "structure"
+
+# Run all content tests
+npx playwright test -g "content"
+```
+
+### Running Specific Test Categories by Page
+
+```bash
+# Homepage specific tests
+npx playwright test tests/homepage-navigation.spec.ts -g "Navigation"
+npx playwright test tests/homepage-seo-standards.spec.ts -g "SEO"
+
+# Testing page specific categories
+npx playwright test tests/testing-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/testing-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/testing-page.spec.ts -g "Content and Interactive"
+
+# Placement page specific categories
+npx playwright test tests/placement-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/placement-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/placement-page.spec.ts -g "Content and Interactive"
+npx playwright test tests/placement-page.spec.ts -g "Social Media and Footer"
+npx playwright test tests/placement-page.spec.ts -g "Content Quality"
+
+# Consulting page specific categories
+npx playwright test tests/consulting-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/consulting-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/consulting-page.spec.ts -g "Content and Interactive"
+npx playwright test tests/consulting-page.spec.ts -g "Accessibility and Security"
+
+# Blog page specific categories
+npx playwright test tests/blog-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/blog-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/blog-page.spec.ts -g "Blog Content"
+npx playwright test tests/blog-page.spec.ts -g "Pagination"
+npx playwright test tests/blog-page.spec.ts -g "Sidebar and Widget"
+npx playwright test tests/blog-page.spec.ts -g "Footer"
+npx playwright test tests/blog-page.spec.ts -g "Accessibility and Security"
+npx playwright test tests/blog-page.spec.ts -g "Mobile Navigation"
+npx playwright test tests/blog-page.spec.ts -g "Blog Functionality"
+
+# Software page specific categories
+npx playwright test tests/software-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/software-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/software-page.spec.ts -g "Content and Interactive"
+npx playwright test tests/software-page.spec.ts -g "Services Portfolio"
+npx playwright test tests/software-page.spec.ts -g "Accessibility and Security"
+npx playwright test tests/software-page.spec.ts -g "Mobile Navigation"
+npx playwright test tests/software-page.spec.ts -g "Business Value"
+
+# Writing page specific categories
+npx playwright test tests/writing-page.spec.ts -g "Page Structure and SEO"
+npx playwright test tests/writing-page.spec.ts -g "Navigation and Link"
+npx playwright test tests/writing-page.spec.ts -g "Content and Interactive"
+npx playwright test tests/writing-page.spec.ts -g "Accessibility and Security"
+npx playwright test tests/writing-page.spec.ts -g "Mobile Navigation"
 ```
 
 ---
@@ -1736,54 +1844,6 @@ npm run report
 - **Page Object**: PlacementPage.ts
 - **Priority**: High
 
----
-
-## Test Execution Commands
-
-### Running Individual Test Files
-
-```bash
-# Run all tests
-npx playwright test
-
-# Run specific page tests
-npx playwright test tests/homepage.spec.ts
-npx playwright test tests/testing-page.spec.ts
-npx playwright test tests/consulting-page.spec.ts
-npx playwright test tests/software-page.spec.ts
-npx playwright test tests/blog-page.spec.ts
-npx playwright test tests/writing-page.spec.ts
-npx playwright test tests/placement-page.spec.ts
-
-# Run tests with headed browser
-npx playwright test --headed
-
-# Run tests in debug mode
-npx playwright test --debug
-```
-
-### Running Tests by Groups
-
-```bash
-# Run all navigation tests
-npx playwright test -g "navigation"
-
-# Run all SEO tests  
-npx playwright test -g "meta description"
-
-# Run all accessibility tests
-npx playwright test -g "accessibility"
-
-# Run all link tests
-npx playwright test -g "link"
-
-# Run all structure tests
-npx playwright test -g "structure"
-
-# Run all content tests
-npx playwright test -g "content"
-```
-
 #### TC-174: Meta Description Validation
 - **Test Name**: should have meta description for SEO
 - **Description**: Checks that the page has a meta description for search engine optimization
@@ -2078,34 +2138,6 @@ npx playwright test -g "content"
 - **Priority**: Medium
 - **Details**: Main content elements not found
 
-## Running Writing Page Tests
-
-To run all Writing page tests:
-```bash
-npx playwright test tests/writing-page.spec.ts
-```
-
-To run specific test blocks:
-```bash
-# Page structure and SEO tests
-npx playwright test tests/writing-page.spec.ts -g "Page Structure and SEO"
-
-# Navigation and link tests
-npx playwright test tests/writing-page.spec.ts -g "Navigation and Link"
-
-# Content and interactive elements
-npx playwright test tests/writing-page.spec.ts -g "Content and Interactive"
-
-# Publications section tests
-npx playwright test tests/writing-page.spec.ts -g "Recent Publications"
-
-# Accessibility tests
-npx playwright test tests/writing-page.spec.ts -g "Accessibility and Standards"
-
-# Business logic tests
-npx playwright test tests/writing-page.spec.ts -g "Business Logic"
-```
-
 ---
 
 ## Placement Page Tests (`tests/placement-page.spec.ts`)
@@ -2277,36 +2309,11 @@ npx playwright test tests/writing-page.spec.ts -g "Business Logic"
 - **Page Object**: PlacementPage.ts
 - **Priority**: High
 
-## Running Placement Page Tests
-
-To run all Placement page tests:
-```bash
-npx playwright test tests/placement-page.spec.ts
-```
-
-To run specific test blocks:
-```bash
-# Page structure and SEO tests
-npx playwright test tests/placement-page.spec.ts -g "Page Structure and SEO"
-
-# Navigation and link tests
-npx playwright test tests/placement-page.spec.ts -g "Navigation and Link"
-
-# Content and interactive elements
-npx playwright test tests/placement-page.spec.ts -g "Content and Interactive"
-
-# Social media and footer tests
-npx playwright test tests/placement-page.spec.ts -g "Social Media and Footer"
-
-# Content quality tests
-npx playwright test tests/placement-page.spec.ts -g "Content Quality"
-```
-
 ---
 
-### Consulting Page Tests (`tests/consulting-page.spec.ts`)
+## Consulting Page Tests (`tests/consulting-page.spec.ts`)
 
-#### TEST-039: TC-039 Page Title Validation
+#### TC-039: Page Title Validation
 - **Test Name**: Should have proper page title
 - **Description**: Validates that the Consulting page has a proper, descriptive title
 - **Expected Result**: Title should contain "Consulting" and "Excelon Development"
@@ -2315,7 +2322,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-040: TC-040 Meta Description Validation  
+#### TC-040: Meta Description Validation  
 - **Test Name**: Should have meta description for SEO
 - **Description**: Ensures the page has a meta description for search engine optimization
 - **Expected Result**: Meta description should be present and not empty
@@ -2324,7 +2331,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-041: TC-041 Heading Hierarchy Validation
+#### TC-041: Heading Hierarchy Validation
 - **Test Name**: Should have proper heading hierarchy
 - **Description**: Validates proper H1, H2, H4 structure for accessibility and SEO
 - **Expected Result**: Should have 1 H1, multiple H2s, and proper hierarchy
@@ -2333,7 +2340,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-042: TC-042 H1 Content Validation
+#### TC-042: H1 Content Validation
 - **Test Name**: Should have correct H1 content
 - **Description**: Ensures H1 contains relevant content, not template placeholder
 - **Expected Result**: H1 should contain "Consulting" not "Search results"
@@ -2342,7 +2349,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-043: TC-043 Quality Content Validation
+#### TC-043: Quality Content Validation
 - **Test Name**: Should have quality page content
 - **Description**: Validates sufficient content with proper structure and sections
 - **Expected Result**: Should have 7+ paragraphs and main content sections
@@ -2351,7 +2358,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-044: TC-044 Page Structure Validation
+#### TC-044: Page Structure Validation
 - **Test Name**: Should have proper page structure
 - **Description**: Validates presence of main content areas, headers, and footer
 - **Expected Result**: Main content, page heading, and footer should be visible
@@ -2360,7 +2367,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-045: TC-045 Main Navigation Validation
+#### TC-045: Main Navigation Validation
 - **Test Name**: Should have functional main navigation
 - **Description**: Validates that all main navigation elements are visible and accessible
 - **Expected Result**: All navigation links should be visible
@@ -2369,7 +2376,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-046: TC-046 Broken Navigation Links Detection
+#### TC-046: Broken Navigation Links Detection
 - **Test Name**: Should not have broken navigation links
 - **Description**: Identifies navigation links that point to "#" or are non-functional
 - **Expected Result**: No navigation links should point to "#"
@@ -2378,7 +2385,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-047: TC-047 Logo Accessibility Validation
+#### TC-047: Logo Accessibility Validation
 - **Test Name**: Should have accessible logo and navigation
 - **Description**: Validates logo visibility and proper alt text for accessibility
 - **Expected Result**: Logo should be visible with proper alt text
@@ -2387,7 +2394,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-048-051: Navigation Links Functionality
+#### TC-048-051: Navigation Links Functionality
 - **Test Names**: Should navigate to Testing/Placement/Writing/Home pages
 - **Description**: Validates that navigation links lead to correct destinations
 - **Expected Result**: Each navigation link should lead to its respective page
@@ -2396,7 +2403,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-052: TC-052 Main Content Sections Display
+#### TC-052: Main Content Sections Display
 - **Test Name**: Should display main content sections
 - **Description**: Validates that key content sections are visible on the page
 - **Expected Result**: Excelon Difference, Practitioners, and CTA sections visible
@@ -2405,7 +2412,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-053: TC-053 Excelon Difference Section
+#### TC-053: Excelon Difference Section
 - **Test Name**: Should display Excelon Difference section content
 - **Description**: Validates the consulting process description section
 - **Expected Result**: All process description paragraphs should be visible
@@ -2414,7 +2421,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-054: TC-054 Software Practitioners Section
+#### TC-054: Software Practitioners Section
 - **Test Name**: Should display software practitioners section
 - **Description**: Validates the consultant qualifications section
 - **Expected Result**: Practitioners heading and description paragraphs visible
@@ -2423,7 +2430,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-055: TC-055 Contact Call-to-Action
+#### TC-055: Contact Call-to-Action
 - **Test Name**: Should have functional contact call-to-action
 - **Description**: Validates the contact button functionality and proper href
 - **Expected Result**: Contact button should be visible with valid contact URL
@@ -2432,7 +2439,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-056: TC-056 Technical Writing Image
+#### TC-056: Technical Writing Image
 - **Test Name**: Should display technical writing image with alt text
 - **Description**: Validates image presence and accessibility
 - **Expected Result**: Image should be visible with proper alt text
@@ -2441,7 +2448,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-057: TC-057 Hero Image Display
+#### TC-057: Hero Image Display
 - **Test Name**: Should have hero image displayed
 - **Description**: Validates presence of main page hero image
 - **Expected Result**: Hero image should be visible
@@ -2450,7 +2457,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Low
 
-#### TEST-058-061: Consultation Process Validation
+#### TC-058-061: Consultation Process Validation
 - **Test Names**: Process description, timeframe, observation, recommendations, qualifications
 - **Description**: Validates detailed consultation process descriptions
 - **Expected Result**: All consultation process elements should contain expected content
@@ -2459,7 +2466,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-062: TC-062 Complete Footer Elements
+#### TC-062: Complete Footer Elements
 - **Test Name**: Should have complete footer elements
 - **Description**: Validates presence of all footer components
 - **Expected Result**: Footer, copyright, Rumspeed link, and navigation visible
@@ -2468,7 +2475,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-063: TC-063 Footer Navigation Functionality
+#### TC-063: Footer Navigation Functionality
 - **Test Name**: Should have functional footer navigation
 - **Description**: Validates footer navigation links are visible and accessible
 - **Expected Result**: All footer navigation links should be visible
@@ -2477,7 +2484,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-064: TC-064 Footer Contact Navigation
+#### TC-064: Footer Contact Navigation
 - **Test Name**: Should navigate to contact from footer
 - **Description**: Validates footer contact link functionality
 - **Expected Result**: Footer contact link should lead to contact page
@@ -2486,7 +2493,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-065: TC-065 Rumspeed Link Functionality
+#### TC-065: Rumspeed Link Functionality
 - **Test Name**: Should have functional Rumspeed link
 - **Description**: Validates Rumspeed link has proper href and is not broken
 - **Expected Result**: Rumspeed link should have valid href, not "#"
@@ -2495,7 +2502,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Low
 
-#### TEST-066: TC-066 Images Alt Text Validation
+#### TC-066: Images Alt Text Validation
 - **Test Name**: Should not have images without alt text
 - **Description**: Validates all images have proper alt text for accessibility
 - **Expected Result**: All images should have alt text
@@ -2504,7 +2511,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-067: TC-067 Links Accessibility Validation
+#### TC-067: Links Accessibility Validation
 - **Test Name**: Should not have links without accessible text
 - **Description**: Identifies links without visible text, aria-label, or title
 - **Expected Result**: All links should have accessible text descriptions
@@ -2513,7 +2520,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-068: TC-068 External Links Security
+#### TC-068: External Links Security
 - **Test Name**: Should have secure external links
 - **Description**: Validates external links have proper security attributes
 - **Expected Result**: External links should have rel="noopener" for security
@@ -2522,7 +2529,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-069: TC-069 Responsive Design Elements
+#### TC-069: Responsive Design Elements
 - **Test Name**: Should have responsive design elements
 - **Description**: Validates presence of responsive/mobile design elements
 - **Expected Result**: Mobile navigation should be present
@@ -2531,7 +2538,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
 
-#### TEST-070: TC-070 Heading Hierarchy Accessibility
+#### TC-070: Heading Hierarchy Accessibility
 - **Test Name**: Should have proper heading hierarchy for accessibility
 - **Description**: Validates proper heading structure for screen readers
 - **Expected Result**: Should have 1 H1 and multiple H2s in proper hierarchy
@@ -2540,7 +2547,7 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Page Object**: ConsultingPage.ts
 - **Priority**: High
 
-#### TEST-071-074: Mobile Navigation Validation
+#### TC-071-074: Mobile Navigation Validation
 - **Test Names**: Mobile navigation elements, links, logo accessibility, expandable sections
 - **Description**: Validates all mobile navigation components and functionality
 - **Expected Result**: All mobile navigation elements should be visible and accessible
@@ -2548,28 +2555,6 @@ npx playwright test tests/placement-page.spec.ts -g "Content Quality"
 - **Bug Reference**: N/A
 - **Page Object**: ConsultingPage.ts
 - **Priority**: Medium
-
-## Running Consulting Page Tests
-
-To run all Consulting page tests:
-```bash
-npx playwright test tests/consulting-page.spec.ts
-```
-
-To run specific test blocks:
-```bash
-# Page structure and SEO tests
-npx playwright test tests/consulting-page.spec.ts -g "Page Structure and SEO"
-
-# Navigation and link tests
-npx playwright test tests/consulting-page.spec.ts -g "Navigation and Link"
-
-# Content and interactive elements
-npx playwright test tests/consulting-page.spec.ts -g "Content and Interactive"
-
-# Accessibility tests
-npx playwright test tests/consulting-page.spec.ts -g "Accessibility and Security"
-```
 
 ---
 
@@ -2964,37 +2949,6 @@ npx playwright test tests/consulting-page.spec.ts -g "Accessibility and Security
 - **Current Status**: **PASS** ✅
 - **Page Object**: SoftwarePage.ts
 - **Priority**: High
-
-## Running Software Page Tests
-
-To run all Software page tests:
-```bash
-npx playwright test tests/software-page.spec.ts
-```
-
-To run specific test blocks:
-```bash
-# Page structure and SEO tests
-npx playwright test tests/software-page.spec.ts -g "Page Structure and SEO"
-
-# Navigation and link tests
-npx playwright test tests/software-page.spec.ts -g "Navigation and Link"
-
-# Content and interactive elements
-npx playwright test tests/software-page.spec.ts -g "Content and Interactive"
-
-# Services portfolio tests
-npx playwright test tests/software-page.spec.ts -g "Services Portfolio"
-
-# Accessibility tests
-npx playwright test tests/software-page.spec.ts -g "Accessibility and Security"
-
-# Mobile navigation tests
-npx playwright test tests/software-page.spec.ts -g "Mobile Navigation"
-
-# Business value tests
-npx playwright test tests/software-page.spec.ts -g "Business Value"
-```
 
 ---
 
@@ -3488,107 +3442,8 @@ npx playwright test tests/software-page.spec.ts -g "Business Value"
 - **Priority**: High
 - **Details**: Timeout accessing main content for value proposition analysis
 
-## Running Blog Page Tests
-
-To run all Blog page tests:
-```bash
-npx playwright test tests/blog-page.spec.ts
-```
-
-To run specific test blocks:
-```bash
-# Page structure and SEO tests
-npx playwright test tests/blog-page.spec.ts -g "Page Structure and SEO"
-
-# Navigation and link tests
-npx playwright test tests/blog-page.spec.ts -g "Navigation and Link"
-
-# Blog content tests
-npx playwright test tests/blog-page.spec.ts -g "Blog Content"
-
-# Pagination tests
-npx playwright test tests/blog-page.spec.ts -g "Pagination"
-
-# Sidebar and widget tests
-npx playwright test tests/blog-page.spec.ts -g "Sidebar and Widget"
-
-# Footer tests
-npx playwright test tests/blog-page.spec.ts -g "Footer"
-
-# Accessibility tests
-npx playwright test tests/blog-page.spec.ts -g "Accessibility and Security"
-
-# Mobile navigation tests
-npx playwright test tests/blog-page.spec.ts -g "Mobile Navigation"
-
-# Blog functionality tests
-npx playwright test tests/blog-page.spec.ts -g "Blog Functionality"
-```
-
----
-
-## Overall Test Execution Summary
-
-### Running All Tests
-```bash
-# Run all tests across all pages
-npx playwright test
-
-# Run tests in headed mode (see browser)
-npx playwright test --headed
-
-# Run tests with debug mode
-npx playwright test --debug
-
-# Generate and view test report
-npx playwright test; npx playwright show-report
-```
-
-### Running Tests by Page
-```bash
-# Homepage tests
-npx playwright test tests/homepage-navigation.spec.ts tests/homepage-seo-standards.spec.ts
-
-# Testing page tests
-npx playwright test tests/testing-page.spec.ts
-
-# Writing page tests
-npx playwright test tests/writing-page.spec.ts
-
-# Placement page tests
-npx playwright test tests/placement-page.spec.ts
-
-# Consulting page tests
-npx playwright test tests/consulting-page.spec.ts
-
-# Software page tests
-npx playwright test tests/software-page.spec.ts
-
-# Blog page tests
-npx playwright test tests/blog-page.spec.ts
-```
-
-### Current Test Status (as of latest run)
-- **Total Test Cases**: 204 tests across 7 pages
-- **Pass Rate**: 66.2% (135 passed, 69 failed)
-- **Critical Issues**: Site-wide template problems affecting multiple pages
-- **Positive Findings**: Strong content management and functionality where implemented correctly
-
 ---
 
 *Last Updated: Current test run results as of latest execution*
 *Framework Version: Playwright TypeScript with Page Object Model*
 *Testing Standards: ISTQB compliant with bug-first approach*
-
-# Sidebar and widget tests
-npx playwright test tests/blog-page.spec.ts -g "Sidebar and Widget"
-
-# Accessibility tests
-npx playwright test tests/blog-page.spec.ts -g "Accessibility and Security"
-
-# Mobile navigation tests
-npx playwright test tests/blog-page.spec.ts -g "Mobile Navigation"
-
-# Blog functionality tests
-npx playwright test tests/blog-page.spec.ts -g "Blog Functionality"
-```
