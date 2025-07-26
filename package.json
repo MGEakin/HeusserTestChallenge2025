@@ -1,0 +1,23 @@
+{
+  "name": "xndev-bug-hunter",
+  "version": "1.0.0",
+  "description": "Playwright test automation framework for finding bugs on XNDEV.COM",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "lint": "npx eslint tests/ page-objects/ --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": ["playwright", "testing", "automation", "bug-hunting", "typescript"],
+  "author": "Matthew Eakin",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
+  }
+}
